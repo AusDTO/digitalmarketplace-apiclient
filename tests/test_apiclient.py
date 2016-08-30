@@ -1781,6 +1781,28 @@ class TestDataApiClient(object):
             "updated_by": "user@example.com",
         }
 
+    def test_list_supplier_account_invite_candidates(self, data_client, rmock):
+        rmock.get(
+            'http://baseurl/users/supplier-invite/list-candidates',
+            json={},
+            status_code=200)
+
+        result = data_client.list_supplier_account_invite_candidates()
+
+        assert result == {}
+        assert rmock.called
+
+    def test_record_supplier_invite(self, data_client, rmock):
+        rmock.post(
+            'http://baseurl/users/supplier-invite',
+            json={},
+            status_code=200)
+
+        result = data_client.record_supplier_invite(123, 'test@example.com')
+
+        assert result == {}
+        assert rmock.called
+
 
 class TestDataAPIClientIterMethods(object):
     def _test_find_iter(self, data_client, rmock, method_name, model_name, url_path):
