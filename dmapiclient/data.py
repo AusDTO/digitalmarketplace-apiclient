@@ -622,3 +622,13 @@ class DataAPIClient(BaseAPIClient):
                 }
             },
             user=user)
+
+    def list_supplier_account_invite_candidates(self):
+        return self._get('/users/supplier-invite/list-candidates')
+
+    def record_supplier_invite(self, supplier_code, email_address):
+        data = {
+            'supplierCode': supplier_code,
+            'email': email_address,
+        }
+        return self._post('/users/supplier-invite', data=data)
