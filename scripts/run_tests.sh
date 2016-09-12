@@ -1,5 +1,6 @@
 #!/bin/bash
 set -o pipefail
+set -o errexit
 
 function display_result {
   RESULT=$1
