@@ -317,8 +317,11 @@ class DataAPIClient(BaseAPIClient):
                     active=None,
                     role=None,
                     supplier_code=None,
-                    updater="no logged-in user"):
-        fields = {}
+                    updater='no logged-in user',
+                    fields=None):
+        if fields is None:
+            fields = {}
+
         if locked is not None:
             fields.update({
                 'locked': locked

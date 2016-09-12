@@ -756,6 +756,18 @@ class TestDataApiClient(object):
             "users": {"active": False}
         }
 
+    def test_can_update_terms_acceptance_timestamp(self, data_client, rmock):
+        rmock.post(
+            'http://baseurl/users/123',
+            json={},
+            status_code=200)
+        data_client.update_user(123, updater='test@example.com', fields={'termsAcceptedAt': 'time'})
+        assert rmock.called
+        assert rmock.last_request.json() == {
+            'updated_by': 'test@example.com',
+            'users': {'termsAcceptedAt': 'time'}
+        }
+
     def test_can_export_users(self, data_client, rmock):
         rmock.get(
             "http://baseurl/users/export/g-cloud-7",
