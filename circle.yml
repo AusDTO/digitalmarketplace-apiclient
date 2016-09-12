@@ -8,4 +8,4 @@ dependencies:
 
 test:
   override:
-    - ./scripts/run_tests.sh
+    - ./scripts/run_tests.sh tests/
