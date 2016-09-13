@@ -1804,6 +1804,17 @@ class TestDataApiClient(object):
         assert result == {}
         assert rmock.called
 
+    def test_list_unclaimed_supplier_account_invites(self, data_client, rmock):
+        rmock.get(
+            'http://baseurl/users/supplier-invite/list-unclaimed-invites',
+            json={},
+            status_code=200)
+
+        result = data_client.list_unclaimed_supplier_account_invites()
+
+        assert result == {}
+        assert rmock.called
+
     def test_record_supplier_invite(self, data_client, rmock):
         rmock.post(
             'http://baseurl/users/supplier-invite',
