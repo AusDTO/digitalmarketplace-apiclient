@@ -931,7 +931,7 @@ class TestDataApiClient(object):
             status_code=201,
         )
 
-        result = data_client.update_supplier(123, {"foo": "bar"}, {"alpha": "beta"})
+        result = data_client.update_supplier(123, {"foo": "bar"}, {"alpha": "beta"}, 'supplier')
 
         assert result == {"suppliers": "result"}
         assert rmock.called
