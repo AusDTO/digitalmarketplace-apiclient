@@ -636,3 +636,12 @@ class DataAPIClient(BaseAPIClient):
             'email': email_address,
         }
         return self._post('/users/supplier-invite', data=data)
+
+    def get_dashboard_buyers(self):
+        return self._get('/dashboard/buyers')
+
+    def get_dashboard_suppliers(self):
+        return self._get('/dashboard/suppliers')
+
+    def get_dashboard_briefs(self):
+        return self._get('/dashboard/briefs')
