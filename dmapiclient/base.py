@@ -61,6 +61,9 @@ class BaseAPIClient(object):
     def _post(self, url, data):
         return self._request("POST", url, data=data)
 
+    def _patch(self, url, data):
+        return self._request("PATCH", url, data=data)
+
     def _post_with_updated_by(self, url, data, user):
         data = dict(data, updated_by=user)
         return self._post(url, data)
