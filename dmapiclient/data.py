@@ -637,11 +637,14 @@ class DataAPIClient(BaseAPIClient):
         }
         return self._post('/users/supplier-invite', data=data)
 
-    def get_dashboard_buyers(self):
-        return self._get('/dashboard/buyers')
+    def get_buyers_count(self):
+        return self._get('/users/buyers/count')
 
-    def get_dashboard_suppliers(self):
-        return self._get('/dashboard/suppliers')
+    def get_suppliers_count(self):
+        return self._get('/suppliers/count')
 
-    def get_dashboard_briefs(self):
-        return self._get('/dashboard/briefs')
+    def get_roles_count(self):
+        return self._get('/suppliers/roles/count')
+
+    def get_briefs_count(self):
+        return self._get('/briefs/count')
