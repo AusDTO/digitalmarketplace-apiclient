@@ -636,3 +636,15 @@ class DataAPIClient(BaseAPIClient):
             'email': email_address,
         }
         return self._post('/users/supplier-invite', data=data)
+
+    def get_buyers_count(self, params):
+        return self._get('/users/count', params=params)
+
+    def get_suppliers_count(self):
+        return self._get('/suppliers/count')
+
+    def get_roles_count(self):
+        return self._get('/roles/count')
+
+    def get_briefs_count(self):
+        return self._get('/briefs/count')
