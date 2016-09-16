@@ -644,7 +644,7 @@ class DataAPIClient(BaseAPIClient):
         return self._get('/suppliers/count')
 
     def get_roles_count(self):
-        return self._get('/suppliers/roles/count')
+        return self._get('/roles/count')
 
     def get_briefs_count(self):
         return self._get('/briefs/count')
