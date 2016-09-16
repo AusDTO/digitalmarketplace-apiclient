@@ -637,8 +637,8 @@ class DataAPIClient(BaseAPIClient):
         }
         return self._post('/users/supplier-invite', data=data)
 
-    def get_buyers_count(self):
-        return self._get('/users/buyers/count')
+    def get_buyers_count(self, account_type):
+        return self._get('/users/count', params=account_type)
 
     def get_suppliers_count(self):
         return self._get('/suppliers/count')
