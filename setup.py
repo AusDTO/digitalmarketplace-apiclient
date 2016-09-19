@@ -16,9 +16,9 @@ requirements = list(parse_requirements('requirements.txt', session=pip.download.
 install_requires = [str(r.req) for r in requirements]
 
 setup(
-    name='digitalmarketplace-apiclient',
+    name='dto-digitalmarketplace-apiclient',
     version=version,
-    url='https://github.com/alphagov/digitalmarketplace-apiclient',
+    url='https://github.com/AusDTO/dto-digitalmarketplace-apiclient',
     license='MIT',
     author='GDS Developers',
     description='Digital Marketplace Data and Search API clients',
