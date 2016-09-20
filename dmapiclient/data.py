@@ -113,8 +113,11 @@ class DataAPIClient(BaseAPIClient):
             data={"suppliers": supplier},
         )
 
-    def update_supplier(self, supplier_code, supplier, contact, user):
-        supplier_data = dict(supplier, contacts=[contact])
+    def update_supplier(self, supplier_code, supplier, contact=None, user=None):
+        supplier_data = dict(supplier)
+        if contact is not None:
+            supplier_data.update(contacts=[contact])
+
         return self._patch(
             "/suppliers/{}".format(supplier_code),
             data={"supplier": supplier_data},

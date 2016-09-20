@@ -939,6 +939,21 @@ class TestDataApiClient(object):
             'supplier': {"contacts": [{"alpha": "beta"}], 'foo': 'bar'}
         }
 
+    def test_update_supplier_with_no_contact(self, data_client, rmock):
+        rmock.patch(
+            "http://baseurl/suppliers/123",
+            json={"suppliers": "result"},
+            status_code=201,
+        )
+
+        result = data_client.update_supplier(123, {"foo": "bar"}, user='supplier')
+
+        assert result == {"suppliers": "result"}
+        assert rmock.called
+        assert rmock.request_history[0].json() == {
+            'supplier': {'foo': 'bar'}
+        }
+
     def test_update_contact_information(self, data_client, rmock):
         rmock.post(
             "http://baseurl/suppliers/123/contact-information/2",
