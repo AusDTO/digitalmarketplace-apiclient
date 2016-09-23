@@ -77,6 +77,7 @@ def test_brief():
             "publishedAt": "2016-03-29T10:11:14.000000Z",
             "applicationsClosedAt": "2016-04-07T00:00:00.000000Z",
             "clarificationQuestionsClosedAt": "2016-04-02T00:00:00.000000Z",
+            "clarificationQuestionsPublishedBy": "2016-04-06T00:00:00.000000Z",
             "clarificationQuestionsAreClosed": False,
             "clarificationQuestions": [],
         }
@@ -124,6 +125,7 @@ def test_brief():
             "publishedAt": "2016-03-29T10:11:14.000000Z",
             "applicationsClosedAt": "2016-04-07T00:00:00.000000Z",
             "clarificationQuestionsClosedAt": "2016-04-02T00:00:00.000000Z",
+            "clarificationQuestionsPublishedBy": "2016-04-06T00:00:00.000000Z",
             "clarificationQuestionsAreClosed": True,
             "clarificationQuestions": [],
         }
