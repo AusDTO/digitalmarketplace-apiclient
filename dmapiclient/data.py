@@ -651,3 +651,11 @@ class DataAPIClient(BaseAPIClient):
 
     def get_briefs_count(self):
         return self._get('/briefs/count')
+
+    def create_work_order(self, briefId, supplierCode, workOrder={}):
+        work_order_data = dict(workOrder, briefId=briefId, supplierCode=supplierCode)
+
+        return self._post(
+            "/work-orders",
+            data={"workOrder": work_order_data},
+        )
