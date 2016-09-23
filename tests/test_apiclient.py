@@ -1841,6 +1841,33 @@ class TestDataApiClient(object):
         assert result == {}
         assert rmock.called
 
+    def test_create_work_order(self, data_client, rmock):
+        rmock.post(
+            "http://baseurl/work-orders",
+            json={"workOrder": "result"},
+            status_code=201,
+        )
+
+        result = data_client.create_work_order(1, 2, {"foo": "bar"})
+
+        assert result == {"workOrder": "result"}
+        assert rmock.last_request.json() == {
+            "workOrder": {
+                "briefId": 1,
+                "supplierCode": 2,
+                "foo": "bar"
+            }
+        }
+
+        data_client.create_work_order(1, 2)
+
+        assert rmock.last_request.json() == {
+            "workOrder": {
+                "briefId": 1,
+                "supplierCode": 2,
+            }
+        }
+
 
 class TestDataAPIClientIterMethods(object):
     def _test_find_iter(self, data_client, rmock, method_name, model_name, url_path):
