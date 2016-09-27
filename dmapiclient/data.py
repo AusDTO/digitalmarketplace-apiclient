@@ -659,3 +659,7 @@ class DataAPIClient(BaseAPIClient):
             "/work-orders",
             data={"workOrder": work_order_data},
         )
+
+    def get_work_order(self, work_order_id):
+        return self._get(
+            "/work-orders/{}".format(work_order_id))

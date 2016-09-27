@@ -1868,6 +1868,16 @@ class TestDataApiClient(object):
             }
         }
 
+    def test_get_work_order(self, data_client, rmock):
+        rmock.get(
+            "http://baseurl/work-orders/123",
+            json={"workOrder": "result"},
+            status_code=200)
+
+        result = data_client.get_work_order(123)
+
+        assert result == {"workOrder": "result"}
+
 
 class TestDataAPIClientIterMethods(object):
     def _test_find_iter(self, data_client, rmock, method_name, model_name, url_path):
