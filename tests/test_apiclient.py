@@ -1878,6 +1878,22 @@ class TestDataApiClient(object):
 
         assert result == {"workOrder": "result"}
 
+    def test_update_work_order(self, data_client, rmock):
+        rmock.patch(
+            "http://baseurl/work-orders/1",
+            json={"workOrder": "result"},
+            status_code=200,
+        )
+
+        result = data_client.update_work_order(1, {"foo": "bar"})
+
+        assert result == {"workOrder": "result"}
+        assert rmock.last_request.json() == {
+            "workOrder": {
+                "foo": "bar"
+            }
+        }
+
 
 class TestDataAPIClientIterMethods(object):
     def _test_find_iter(self, data_client, rmock, method_name, model_name, url_path):
