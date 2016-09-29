@@ -663,3 +663,9 @@ class DataAPIClient(BaseAPIClient):
     def get_work_order(self, work_order_id):
         return self._get(
             "/work-orders/{}".format(work_order_id))
+
+    def update_work_order(self, workOrderId, workOrder):
+        return self._patch(
+            "/work-orders/{}".format(workOrderId),
+            data={"workOrder": workOrder},
+        )
