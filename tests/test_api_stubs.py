@@ -51,6 +51,7 @@ def test_brief():
             "createdAt": "2016-03-29T10:11:12.000000Z",
             "updatedAt": "2016-03-29T10:11:13.000000Z",
             "clarificationQuestions": [],
+            "sellerSelector": 'allSellers'
         }
     }
 
@@ -80,6 +81,7 @@ def test_brief():
             "clarificationQuestionsPublishedBy": "2016-04-06T00:00:00.000000Z",
             "clarificationQuestionsAreClosed": False,
             "clarificationQuestions": [],
+            "sellerSelector": 'allSellers'
         }
     }
 
@@ -103,6 +105,7 @@ def test_brief():
                 "question": "Why?",
                 "answer": "Because"
             }],
+            "sellerSelector": 'allSellers'
         }
     }
 
@@ -128,5 +131,6 @@ def test_brief():
             "clarificationQuestionsPublishedBy": "2016-04-06T00:00:00.000000Z",
             "clarificationQuestionsAreClosed": True,
             "clarificationQuestions": [],
+            "sellerSelector": 'allSellers'
         }
     }

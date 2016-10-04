@@ -53,6 +53,7 @@ def brief(status="draft",
             "createdAt": "2016-03-29T10:11:12.000000Z",
             "updatedAt": "2016-03-29T10:11:13.000000Z",
             "clarificationQuestions": clarification_questions or [],
+            "sellerSelector": 'allSellers'
         }
     }
     if status == "live":
