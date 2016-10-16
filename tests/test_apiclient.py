@@ -102,7 +102,7 @@ def service():
         "datacentreTier": "TIA-942 Tier 3",
         "datacentresSpecifyLocation": True,
         "datacentresEUCode": False,
-        }
+    }
 
 
 class TestBaseApiClient(object):
@@ -174,7 +174,7 @@ class TestSearchApiClient(object):
             "DM_SEARCH_API_URL": "http://example",
             "DM_SEARCH_API_AUTH_TOKEN": "example-token",
             "ES_ENABLED": False,
-            }
+        }
         search_client.init_app(app)
 
         assert search_client.base_url == "http://example"
@@ -364,7 +364,7 @@ class TestDataApiClient(object):
         app.config = {
             "DM_DATA_API_URL": "http://example",
             "DM_DATA_API_AUTH_TOKEN": "example-token",
-            }
+        }
         data_client.init_app(app)
 
         assert data_client.base_url == "http://example"
@@ -1076,9 +1076,9 @@ class TestDataApiClient(object):
         assert rmock.called
         assert rmock.request_history[0].json() == {
             'frameworkInterest': {
-                    'agreementReturned': True,
-                    'agreementDetails': {'uploaderUserId': 10},
-                },
+                'agreementReturned': True,
+                'agreementDetails': {'uploaderUserId': 10},
+            },
             'updated_by': 'user',
         }
 
@@ -1101,8 +1101,8 @@ class TestDataApiClient(object):
         assert rmock.called
         assert rmock.request_history[0].json() == {
             'frameworkInterest': {
-                    'agreementReturned': True,
-                },
+                'agreementReturned': True,
+            },
             'updated_by': 'user',
         }
 
@@ -1140,11 +1140,8 @@ class TestDataApiClient(object):
         }
         assert rmock.called
         assert rmock.request_history[0].json() == {
-            'frameworkInterest': {
-                    'agreementDetails': {'signerName': 'name'}
-                },
-            'updated_by': 'user',
-        }
+            'frameworkInterest': {'agreementDetails': {'signerName': 'name'}}, 'updated_by': 'user'
+            }
 
     def test_register_framework_agreement_countersigned(self, data_client, rmock):
         rmock.post(
@@ -1419,7 +1416,9 @@ class TestDataApiClient(object):
 
     def test_find_audit_events_with_all_params(self, data_client, rmock):
         rmock.get(
-            "http://baseurl/audit-events?page=123&audit-type=contact_update&audit-date=2010-01-01&acknowledged=all&object-type=foo&object-id=123&latest_first=True",  # noqa
+            "http://baseurl/audit-events?page=123&audit-type=contact_update"
+            "&audit-date=2010-01-01&acknowledged=all&object-type=foo&object-id=123&latest_first=True",
+            # noqa
             json={"audit-event": "result"},
             status_code=200,
         )
@@ -1890,6 +1889,57 @@ class TestDataApiClient(object):
         assert result == {"workOrder": "result"}
         assert rmock.last_request.json() == {
             "workOrder": {
+                "foo": "bar"
+            }
+        }
+
+    def test_create_case_study(self, data_client, rmock):
+        rmock.post(
+            "http://baseurl/case-studies",
+            json={"caseStudy": "result"},
+            status_code=201,
+        )
+
+        result = data_client.create_case_study(2, {"foo": "bar"})
+
+        assert result == {"caseStudy": "result"}
+        assert rmock.last_request.json() == {
+            "caseStudy": {
+                "supplierCode": 2,
+                "foo": "bar"
+            }
+        }
+
+        data_client.create_case_study(2)
+
+        assert rmock.last_request.json() == {
+            "caseStudy": {
+                "supplierCode": 2,
+            }
+        }
+
+    def test_get_case_study(self, data_client, rmock):
+        rmock.get(
+            "http://baseurl/case-studies/123",
+            json={"caseStudy": "result"},
+            status_code=200)
+
+        result = data_client.get_case_study(123)
+
+        assert result == {"caseStudy": "result"}
+
+    def test_update_case_study(self, data_client, rmock):
+        rmock.patch(
+            "http://baseurl/case-studies/1",
+            json={"caseStudy": "result"},
+            status_code=200,
+        )
+
+        result = data_client.update_case_study(1, {"foo": "bar"})
+
+        assert result == {"caseStudy": "result"}
+        assert rmock.last_request.json() == {
+            "caseStudy": {
                 "foo": "bar"
             }
         }
