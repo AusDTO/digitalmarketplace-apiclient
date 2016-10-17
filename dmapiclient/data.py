@@ -669,3 +669,21 @@ class DataAPIClient(BaseAPIClient):
             "/work-orders/{}".format(workOrderId),
             data={"workOrder": workOrder},
         )
+
+    def create_case_study(self, supplierCode, caseStudy={}):
+        case_study_data = dict(caseStudy, supplierCode=supplierCode)
+
+        return self._post(
+            "/case-studies",
+            data={"caseStudy": case_study_data},
+        )
+
+    def get_case_study(self, case_study_id):
+        return self._get(
+            "/case-studies/{}".format(case_study_id))
+
+    def update_case_study(self, caseStudyId, caseStudy):
+        return self._patch(
+            "/case-studies/{}".format(caseStudyId),
+            data={"caseStudy": caseStudy},
+        )
