@@ -36,7 +36,29 @@ def brief(status="draft",
           user_id=123,
           framework_name="Digital Outcomes and Specialists",
           clarification_questions=None,
+          dates=None,
           clarification_questions_closed=False):
+
+    DATES_PUBLISHED = {
+      "answers_close": "2016-10-19T07:00:00+00:00",
+      "application_open_weeks": "2 weeks",
+      "closing_date": "2016-10-20",
+      "closing_time": "2016-10-20T07:00:00+00:00",
+      "hypothetical_closing_time": None,
+      "published_date": "2016-10-06",
+      "questions_close": "2016-10-13T07:00:00+00:00"
+    }
+
+    DATES_UNPUBLISHED = {
+      "answers_close": None,
+      "application_open_weeks": "2 weeks",
+      "closing_date": None,
+      "closing_time": None,
+      "hypothetical_closing_time": "2016-11-01T07:00:00+00:00",
+      "published_date": None,
+      "questions_close": None
+    }
+
     brief = {
         "briefs": {
             "id": 1234,
@@ -50,17 +72,21 @@ def brief(status="draft",
                        "emailAddress": "buyer@email.com",
                        "id": user_id,
                        "name": "Buyer User"}],
-            "createdAt": "2016-03-29T10:11:12.000000Z",
-            "updatedAt": "2016-03-29T10:11:13.000000Z",
+            "createdAt": "2016-03-29T10:11:12.000000+00:00",
+            "updatedAt": "2016-03-29T10:11:13.000000+00:00",
             "clarificationQuestions": clarification_questions or [],
             "sellerSelector": 'allSellers'
         }
     }
+
     if status == "live":
-        brief['briefs']['publishedAt'] = "2016-03-29T10:11:14.000000Z"
-        brief['briefs']['applicationsClosedAt'] = "2016-04-07T00:00:00.000000Z"
-        brief['briefs']['clarificationQuestionsClosedAt'] = "2016-04-02T00:00:00.000000Z"
+        brief['briefs']['publishedAt'] = "2016-03-29T10:11:14.000000+00:00"
+        brief['briefs']['dates'] = DATES_PUBLISHED
+        brief['briefs']['applicationsClosedAt'] = "2016-04-07T00:00:00.000000+00:00"
+        brief['briefs']['clarificationQuestionsClosedAt'] = "2016-04-02T00:00:00.000000+00:00"
         brief['briefs']['clarificationQuestionsAreClosed'] = clarification_questions_closed
-        brief['briefs']['clarificationQuestionsPublishedBy'] = "2016-04-06T00:00:00.000000Z"
+        brief['briefs']['clarificationQuestionsPublishedBy'] = "2016-04-06T00:00:00.000000+00:00"
+    else:
+        brief['briefs']['dates'] = DATES_UNPUBLISHED
 
     return brief

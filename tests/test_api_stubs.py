@@ -48,10 +48,19 @@ def test_brief():
                        "emailAddress": "buyer@email.com",
                        "id": 123,
                        "name": "Buyer User"}],
-            "createdAt": "2016-03-29T10:11:12.000000Z",
-            "updatedAt": "2016-03-29T10:11:13.000000Z",
+            "createdAt": "2016-03-29T10:11:12.000000+00:00",
+            "updatedAt": "2016-03-29T10:11:13.000000+00:00",
             "clarificationQuestions": [],
-            "sellerSelector": 'allSellers'
+            "sellerSelector": 'allSellers',
+            "dates": {
+                "answers_close": None,
+                "application_open_weeks": "2 weeks",
+                "closing_date": None,
+                "closing_time": None,
+                "hypothetical_closing_time": "2016-11-01T07:00:00+00:00",
+                "published_date": None,
+                "questions_close": None
+            }
         }
     }
 
@@ -73,15 +82,24 @@ def test_brief():
                        "emailAddress": "buyer@email.com",
                        "id": 234,
                        "name": "Buyer User"}],
-            "createdAt": "2016-03-29T10:11:12.000000Z",
-            "updatedAt": "2016-03-29T10:11:13.000000Z",
-            "publishedAt": "2016-03-29T10:11:14.000000Z",
-            "applicationsClosedAt": "2016-04-07T00:00:00.000000Z",
-            "clarificationQuestionsClosedAt": "2016-04-02T00:00:00.000000Z",
-            "clarificationQuestionsPublishedBy": "2016-04-06T00:00:00.000000Z",
+            "createdAt": "2016-03-29T10:11:12.000000+00:00",
+            "updatedAt": "2016-03-29T10:11:13.000000+00:00",
+            "publishedAt": "2016-03-29T10:11:14.000000+00:00",
+            "applicationsClosedAt": "2016-04-07T00:00:00.000000+00:00",
+            "clarificationQuestionsClosedAt": "2016-04-02T00:00:00.000000+00:00",
+            "clarificationQuestionsPublishedBy": "2016-04-06T00:00:00.000000+00:00",
             "clarificationQuestionsAreClosed": False,
             "clarificationQuestions": [],
-            "sellerSelector": 'allSellers'
+            "sellerSelector": 'allSellers',
+            "dates": {
+              "answers_close": "2016-10-19T07:00:00+00:00",
+              "application_open_weeks": "2 weeks",
+              "closing_date": "2016-10-20",
+              "closing_time": "2016-10-20T07:00:00+00:00",
+              "hypothetical_closing_time": None,
+              "published_date": "2016-10-06",
+              "questions_close": "2016-10-13T07:00:00+00:00"
+            }
         }
     }
 
@@ -99,13 +117,22 @@ def test_brief():
                        "emailAddress": "buyer@email.com",
                        "id": 123,
                        "name": "Buyer User"}],
-            "createdAt": "2016-03-29T10:11:12.000000Z",
-            "updatedAt": "2016-03-29T10:11:13.000000Z",
+            "createdAt": "2016-03-29T10:11:12.000000+00:00",
+            "updatedAt": "2016-03-29T10:11:13.000000+00:00",
             "clarificationQuestions": [{
                 "question": "Why?",
                 "answer": "Because"
             }],
-            "sellerSelector": 'allSellers'
+            "sellerSelector": 'allSellers',
+            "dates": {
+                "answers_close": None,
+                "application_open_weeks": "2 weeks",
+                "closing_date": None,
+                "closing_time": None,
+                "hypothetical_closing_time": "2016-11-01T07:00:00+00:00",
+                "published_date": None,
+                "questions_close": None
+            }
         }
     }
 
@@ -123,14 +150,23 @@ def test_brief():
                        "emailAddress": "buyer@email.com",
                        "id": 123,
                        "name": "Buyer User"}],
-            "createdAt": "2016-03-29T10:11:12.000000Z",
-            "updatedAt": "2016-03-29T10:11:13.000000Z",
-            "publishedAt": "2016-03-29T10:11:14.000000Z",
-            "applicationsClosedAt": "2016-04-07T00:00:00.000000Z",
-            "clarificationQuestionsClosedAt": "2016-04-02T00:00:00.000000Z",
-            "clarificationQuestionsPublishedBy": "2016-04-06T00:00:00.000000Z",
+            "createdAt": "2016-03-29T10:11:12.000000+00:00",
+            "updatedAt": "2016-03-29T10:11:13.000000+00:00",
+            "publishedAt": "2016-03-29T10:11:14.000000+00:00",
+            "applicationsClosedAt": "2016-04-07T00:00:00.000000+00:00",
+            "clarificationQuestionsClosedAt": "2016-04-02T00:00:00.000000+00:00",
+            "clarificationQuestionsPublishedBy": "2016-04-06T00:00:00.000000+00:00",
             "clarificationQuestionsAreClosed": True,
             "clarificationQuestions": [],
-            "sellerSelector": 'allSellers'
+            "sellerSelector": 'allSellers',
+            "dates": {
+              "answers_close": "2016-10-19T07:00:00+00:00",
+              "application_open_weeks": "2 weeks",
+              "closing_date": "2016-10-20",
+              "closing_time": "2016-10-20T07:00:00+00:00",
+              "hypothetical_closing_time": None,
+              "published_date": "2016-10-06",
+              "questions_close": "2016-10-13T07:00:00+00:00"
+            }
         }
     }
