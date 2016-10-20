@@ -44,7 +44,6 @@ def brief(status="draft",
       "application_open_weeks": "2 weeks",
       "closing_date": "2016-10-20",
       "closing_time": "2016-10-20T07:00:00+00:00",
-      "hypothetical_closing_time": None,
       "published_date": "2016-10-06",
       "questions_close": "2016-10-13T07:00:00+00:00"
     }
@@ -54,7 +53,7 @@ def brief(status="draft",
       "application_open_weeks": "2 weeks",
       "closing_date": None,
       "closing_time": None,
-      "hypothetical_closing_time": "2016-11-01T07:00:00+00:00",
+      "hypothetical": DATES_PUBLISHED,
       "published_date": None,
       "questions_close": None
     }

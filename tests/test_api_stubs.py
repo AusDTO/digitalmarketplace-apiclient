@@ -57,7 +57,14 @@ def test_brief():
                 "application_open_weeks": "2 weeks",
                 "closing_date": None,
                 "closing_time": None,
-                "hypothetical_closing_time": "2016-11-01T07:00:00+00:00",
+                "hypothetical": {
+                    "answers_close": "2016-10-19T07:00:00+00:00",
+                    "application_open_weeks": "2 weeks",
+                    "closing_date": "2016-10-20",
+                    "closing_time": "2016-10-20T07:00:00+00:00",
+                    "published_date": "2016-10-06",
+                    "questions_close": "2016-10-13T07:00:00+00:00"
+                },
                 "published_date": None,
                 "questions_close": None
             }
@@ -96,7 +103,6 @@ def test_brief():
               "application_open_weeks": "2 weeks",
               "closing_date": "2016-10-20",
               "closing_time": "2016-10-20T07:00:00+00:00",
-              "hypothetical_closing_time": None,
               "published_date": "2016-10-06",
               "questions_close": "2016-10-13T07:00:00+00:00"
             }
@@ -129,9 +135,16 @@ def test_brief():
                 "application_open_weeks": "2 weeks",
                 "closing_date": None,
                 "closing_time": None,
-                "hypothetical_closing_time": "2016-11-01T07:00:00+00:00",
                 "published_date": None,
-                "questions_close": None
+                "questions_close": None,
+                "hypothetical": {
+                    "answers_close": "2016-10-19T07:00:00+00:00",
+                    "application_open_weeks": "2 weeks",
+                    "closing_date": "2016-10-20",
+                    "closing_time": "2016-10-20T07:00:00+00:00",
+                    "published_date": "2016-10-06",
+                    "questions_close": "2016-10-13T07:00:00+00:00"
+                }
             }
         }
     }
@@ -164,7 +177,6 @@ def test_brief():
               "application_open_weeks": "2 weeks",
               "closing_date": "2016-10-20",
               "closing_time": "2016-10-20T07:00:00+00:00",
-              "hypothetical_closing_time": None,
               "published_date": "2016-10-06",
               "questions_close": "2016-10-13T07:00:00+00:00"
             }
