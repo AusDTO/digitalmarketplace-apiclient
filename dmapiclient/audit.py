@@ -40,6 +40,11 @@ class AuditTypes(Enum):
     send_application_question = "send_application_question"
     answer_selection_questions = "answer_selection_questions"
 
+    # Case Study lifecycle events
+    create_casestudy = "create_casestudy"
+    update_casestudy = "update_casestudy"
+    delete_casestudy = "delete_casestudy"
+
     # Framework agreements
     upload_signed_agreement = "upload_signed_agreement"
 
