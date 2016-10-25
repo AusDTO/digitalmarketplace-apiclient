@@ -687,3 +687,10 @@ class DataAPIClient(BaseAPIClient):
             "/case-studies/{}".format(caseStudyId),
             data={"caseStudy": caseStudy},
         )
+
+    def delete_case_study(self, caseStudyId, user):
+        return self._delete_with_updated_by(
+            "/case-studies/{}".format(caseStudyId),
+            {},
+            user
+        )
