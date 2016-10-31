@@ -652,6 +652,12 @@ class DataAPIClient(BaseAPIClient):
     def get_briefs_count(self):
         return self._get('/briefs/count')
 
+    def get_metrics(self):
+        return self._get('/metrics')
+
+    def get_metrics_historical(self):
+        return self._get('/metrics/history')
+
     def create_work_order(self, briefId, supplierCode, workOrder={}):
         work_order_data = dict(workOrder, briefId=briefId, supplierCode=supplierCode)
 
