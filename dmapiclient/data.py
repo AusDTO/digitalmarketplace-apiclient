@@ -700,3 +700,26 @@ class DataAPIClient(BaseAPIClient):
             {},
             user
         )
+
+    def create_application(self, user_id, application={}):
+        application_data = dict(application, user_id=user_id)
+
+        return self._post(
+            "/applications",
+            data={"application": application_data},
+        )
+
+    def get_application(self, application_id):
+        return self._get(
+            "/applications/{}".format(application_id))
+
+    def update_application(self, applicationId, application):
+        return self._patch(
+            "/applications/{}".format(applicationId),
+            data={"application": application},
+        )
+
+    def delete_application(self, applicationId):
+        return self._delete(
+            "/applications/{}".format(applicationId)
+        )

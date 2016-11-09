@@ -1961,6 +1961,70 @@ class TestDataApiClient(object):
             'updated_by': 'user'
         }
 
+    def test_create_application(self, data_client, rmock):
+        rmock.post(
+            "http://baseurl/applications",
+            json={"application": "result"},
+            status_code=201,
+        )
+
+        result = data_client.create_application(2, {"foo": "bar"})
+
+        assert result == {"application": "result"}
+        assert rmock.last_request.json() == {
+            "application": {
+                "user_id": 2,
+                "foo": "bar"
+            }
+        }
+
+        data_client.create_application(2)
+
+        assert rmock.last_request.json() == {
+            "application": {
+                "user_id": 2,
+            }
+        }
+
+    def test_get_application(self, data_client, rmock):
+        rmock.get(
+            "http://baseurl/applications/123",
+            json={"application": "result"},
+            status_code=200)
+
+        result = data_client.get_application(123)
+
+        assert result == {"application": "result"}
+
+    def test_update_application(self, data_client, rmock):
+        rmock.patch(
+            "http://baseurl/applications/1",
+            json={"application": "result"},
+            status_code=200,
+        )
+
+        result = data_client.update_application(1, {"foo": "bar"})
+
+        assert result == {"application": "result"}
+        assert rmock.last_request.json() == {
+            "application": {
+                "foo": "bar"
+            }
+        }
+
+    def test_delete_application(self, data_client, rmock):
+        rmock.delete(
+            "http://baseurl/applications/2",
+            json={"done": "it"},
+            status_code=200,
+        )
+
+        data_client.delete_application(
+            2
+        )
+
+        assert rmock.called
+
 
 class TestDataAPIClientIterMethods(object):
     def _test_find_iter(self, data_client, rmock, method_name, model_name, url_path):
