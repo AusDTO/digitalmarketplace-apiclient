@@ -1996,6 +1996,22 @@ class TestDataApiClient(object):
 
         assert result == {"application": "result"}
 
+    def test_find_applications(self, data_client, rmock):
+        rmock.get(
+            "http://baseurl/applications",
+            json={"applications": [{
+                "user_id": 2,
+                "foo": "bar"
+            }]},
+            status_code=200)
+
+        result = data_client.find_applications()
+
+        assert result == {"applications": [{
+            "user_id": 2,
+            "foo": "bar"
+        }]}
+
     def test_update_application(self, data_client, rmock):
         rmock.patch(
             "http://baseurl/applications/1",
