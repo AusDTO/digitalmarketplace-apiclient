@@ -713,9 +713,11 @@ class DataAPIClient(BaseAPIClient):
         return self._get(
             "/applications/{}".format(application_id))
 
-    def find_applications(self):
+    def find_applications(self, user_id=None):
         return self._get(
-            "/applications")
+            "/applications",
+            params={"user_id": user_id}
+        )
 
     def update_application(self, applicationId, application):
         return self._patch(
