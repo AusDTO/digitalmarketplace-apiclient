@@ -5,19 +5,13 @@ from pip.req import parse_requirements
 from setuptools import setup, find_packages
 
 
-_version_re = re.compile(r'__version__\s+=\s+(.*)')
-
-with open('dmapiclient/__init__.py', 'rb') as f:
-    version = str(ast.literal_eval(_version_re.search(
-        f.read().decode('utf-8')).group(1)))
-
 requirements = list(parse_requirements('requirements.txt', session=pip.download.PipSession()))
 
 install_requires = [str(r.req) for r in requirements]
 
 setup(
     name='dto-digitalmarketplace-apiclient',
-    version=version,
+    version='6.12.2',
     url='https://github.com/AusDTO/dto-digitalmarketplace-apiclient',
     license='MIT',
     author='GDS Developers',
