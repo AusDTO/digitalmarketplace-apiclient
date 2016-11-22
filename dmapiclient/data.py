@@ -729,3 +729,8 @@ class DataAPIClient(BaseAPIClient):
         return self._delete(
             "/applications/{}".format(applicationId)
         )
+
+    def approve_application(self, applicationId):
+        return self._post(
+            "/applications/{}/approve".format(applicationId), data={}
+        )

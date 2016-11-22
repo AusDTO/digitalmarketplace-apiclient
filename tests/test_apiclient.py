@@ -2041,6 +2041,19 @@ class TestDataApiClient(object):
 
         assert rmock.called
 
+    def test_approve_application(self, data_client, rmock):
+        rmock.post(
+            "http://baseurl/applications/2/approve",
+            json={"done": "it"},
+            status_code=200,
+        )
+
+        data_client.approve_application(
+            2
+        )
+
+        assert rmock.called
+
 
 class TestDataAPIClientIterMethods(object):
     def _test_find_iter(self, data_client, rmock, method_name, model_name, url_path):
