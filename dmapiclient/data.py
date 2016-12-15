@@ -701,22 +701,19 @@ class DataAPIClient(BaseAPIClient):
             user
         )
 
-    def create_application(self, user_id, application={}):
-        application_data = dict(application, user_id=user_id)
-
+    def create_application(self, application={}):
         return self._post(
             "/applications",
-            data={"application": application_data},
+            data={"application": application},
         )
 
     def get_application(self, application_id):
         return self._get(
             "/applications/{}".format(application_id))
 
-    def find_applications(self, user_id=None):
+    def find_applications(self):
         return self._get(
-            "/applications",
-            params={"user_id": user_id}
+            "/applications"
         )
 
     def update_application(self, applicationId, application):
