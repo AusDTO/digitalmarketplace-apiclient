@@ -1968,21 +1968,19 @@ class TestDataApiClient(object):
             status_code=201,
         )
 
-        result = data_client.create_application(2, {"foo": "bar"})
+        result = data_client.create_application({"foo": "bar"})
 
         assert result == {"application": "result"}
         assert rmock.last_request.json() == {
             "application": {
-                "user_id": 2,
                 "foo": "bar"
             }
         }
 
-        data_client.create_application(2)
+        data_client.create_application()
 
         assert rmock.last_request.json() == {
             "application": {
-                "user_id": 2,
             }
         }
 
