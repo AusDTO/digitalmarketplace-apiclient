@@ -8,7 +8,6 @@ class DataAPIClient(BaseAPIClient):
     def init_app(self, app):
         self.base_url = app.config['DM_DATA_API_URL']
         self.auth_token = app.config['DM_DATA_API_AUTH_TOKEN']
-
     # Audit Events
 
     def find_audit_events(
