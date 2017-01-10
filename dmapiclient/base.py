@@ -11,10 +11,28 @@ from flask import has_request_context, request, current_app
 import backoff
 from monotonic import monotonic
 
+import os
+from functools import partial
+
 from . import __version__
 from .errors import APIError, HTTPError, HTTPTemporaryError, InvalidResponse
 
 logger = logging.getLogger(__name__)
+
+
+HTTP_VERBS = [
+    'GET',
+    'HEAD',
+    'POST',
+    'PUT',
+    'DELETE',
+    'CONNECT',
+    'OPTIONS',
+    'TRACE',
+    'PATH'
+]
+
+HTTP_VERBS_LOWER = [_.lower() for _ in HTTP_VERBS]
 
 
 def make_iter_method(method_name, model_name, url_path):
@@ -42,11 +60,36 @@ def make_iter_method(method_name, model_name, url_path):
     return iter_method
 
 
+class GenericRequester(object):
+    def __init__(self, client, prefix='/'):
+        self.client = client
+        self.prefix = prefix
+
+    def _requester(self, *args):
+        tokens = ['/'] + list(str(_) for _ in args)
+        path = os.path.join(*tokens)
+        path = path.lstrip(os.sep)
+        prefix = os.path.join(self.prefix, path)
+        return GenericRequester(self.client, prefix=prefix)
+
+    def __getattr__(self, name):
+        method_name = name
+
+        if method_name in HTTP_VERBS_LOWER:
+            method_call_name = '_{}'.format(method_name)
+            method = getattr(self.client, method_call_name)
+            url = self.prefix
+            return partial(method, url)
+        else:
+            return partial(self._requester, name)
+
+
 class BaseAPIClient(object):
     def __init__(self, base_url=None, auth_token=None, enabled=True):
         self.base_url = base_url
         self.auth_token = auth_token
         self.enabled = enabled
+        self.req = GenericRequester(self)
 
     def _put(self, url, data):
         return self._request("PUT", url, data=data)
