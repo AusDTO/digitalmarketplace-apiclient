@@ -73,15 +73,12 @@ class GenericRequester(object):
         return GenericRequester(self.client, prefix=prefix)
 
     def __getattr__(self, name):
-        tokens = name.split('_')
-
-        method_name = tokens[0]
-        route = tokens[1:]
+        method_name = name
 
         if method_name in HTTP_VERBS_LOWER:
             method_call_name = '_{}'.format(method_name)
             method = getattr(self.client, method_call_name)
-            url = os.path.join(self.prefix, *route)
+            url = self.prefix
             return partial(method, url)
         else:
             return partial(self._requester, name)

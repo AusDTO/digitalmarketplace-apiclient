@@ -387,7 +387,7 @@ class TestDataApiClient(object):
             json={"status": "ok"},
             status_code=200)
 
-        result = data_client.req.get_domains()
+        result = data_client.req.domains().get()
 
         assert result['status'] == "ok"
         assert rmock.called
@@ -399,19 +399,6 @@ class TestDataApiClient(object):
             status_code=200)
 
         result = data_client.req.suppliers(99).domains(5).approve().post(
-            data={}
-        )
-
-        assert result['status'] == "ok"
-        assert rmock.called
-
-    def test_post_supplier_domain_approval_generic_alternate_style(self, data_client, rmock):
-        rmock.post(
-            "http://baseurl/suppliers/99/domains/5/approve",
-            json={"status": "ok"},
-            status_code=200)
-
-        result = data_client.req.suppliers(99).domains(5).post_approve(
             data={}
         )
 
