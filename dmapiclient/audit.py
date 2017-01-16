@@ -45,6 +45,17 @@ class AuditTypes(Enum):
     update_casestudy = "update_casestudy"
     delete_casestudy = "delete_casestudy"
 
+    # Application lifecycle events
+    create_application = "create_application"
+    submit_application = "submit_application"
+    revert_application = "revert_application"
+    approve_application = "approve_application"
+    reject_application = "reject_application"
+    delete_application = "delete_application"
+
+    unassessed_domain = "unassessed_domain"
+    assessed_domain = "assessed_domain"
+
     # Framework agreements
     upload_signed_agreement = "upload_signed_agreement"
 
