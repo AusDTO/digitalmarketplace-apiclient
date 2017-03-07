@@ -98,8 +98,8 @@ class BaseAPIClient(object):
         data = dict(data, updated_by=user)
         return self._put(url, data)
 
-    def _get(self, url, params=None):
-        return self._request("GET", url, params=params)
+    def _get(self, url, params=None, data=None):
+        return self._request("GET", url, params=params, data=data)
 
     def _post(self, url, data):
         return self._request("POST", url, data=data)
