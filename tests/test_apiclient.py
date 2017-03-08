@@ -392,6 +392,17 @@ class TestDataApiClient(object):
         assert result['status'] == "ok"
         assert rmock.called
 
+    def test_get_domains_generic_with_data_and_params(self, data_client, rmock):
+        rmock.get(
+            "http://baseurl/domains",
+            json={"status": "ok"},
+            status_code=200)
+
+        result = data_client.req.domains().get(data={}, params={})
+
+        assert result['status'] == "ok"
+        assert rmock.called
+
     def test_post_supplier_domain_approval_generic(self, data_client, rmock):
         rmock.post(
             "http://baseurl/suppliers/99/domains/5/approve",
