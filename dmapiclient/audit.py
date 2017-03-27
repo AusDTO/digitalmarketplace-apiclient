@@ -53,6 +53,8 @@ class AuditTypes(Enum):
     reject_application = "reject_application"
     delete_application = "delete_application"
 
+    create_assessment = "create_assessment"
+
     unassessed_domain = "unassessed_domain"
     assessed_domain = "assessed_domain"
 
