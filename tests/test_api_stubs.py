@@ -4,6 +4,7 @@ from dmapiclient import api_stubs
 def test_framework():
     assert api_stubs.framework() == {
         "frameworks": {
+            "id": 7,
             "clarificationQuestionsOpen": True,
             "lots": [],
             "name": "G-Cloud 7",
@@ -41,6 +42,7 @@ def test_brief():
             "title": "I need a thing to do a thing",
             "frameworkSlug": "digital-outcomes-and-specialists",
             "frameworkName": "Digital Outcomes and Specialists",
+            'frameworkFramework': 'digital-outcomes-and-specialists',
             "lotSlug": "digital-specialists",
             "status": "draft",
             "users": [{"active": True,
@@ -82,6 +84,7 @@ def test_brief():
             "title": "I need a thing to do a thing",
             "frameworkSlug": "a-framework-slug",
             "frameworkName": "A Framework Name",
+            "frameworkFramework": "a-framework-slug",
             "lotSlug": "a-lot-slug",
             "status": "live",
             "users": [{"active": True,
@@ -115,6 +118,7 @@ def test_brief():
             "id": 1234,
             "title": "I need a thing to do a thing",
             "frameworkSlug": "digital-outcomes-and-specialists",
+            "frameworkFramework": "digital-outcomes-and-specialists",
             "frameworkName": "Digital Outcomes and Specialists",
             "lotSlug": "digital-specialists",
             "status": "draft",
@@ -154,6 +158,7 @@ def test_brief():
         "briefs": {
             "id": 1234,
             "title": "I need a thing to do a thing",
+            "frameworkFramework": "digital-outcomes-and-specialists",
             "frameworkSlug": "digital-outcomes-and-specialists",
             "frameworkName": "Digital Outcomes and Specialists",
             "lotSlug": "digital-specialists",
