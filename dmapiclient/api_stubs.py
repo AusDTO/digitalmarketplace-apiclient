@@ -11,6 +11,7 @@ def framework(status="open", slug="g-cloud-7", name=None, clarification_question
 
     return {
         "frameworks": {
+            "id": 1,
             "status": status,
             "clarificationQuestionsOpen": clarification_questions_open,
             "name": name,
