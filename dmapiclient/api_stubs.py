@@ -11,7 +11,7 @@ def framework(status="open", slug="g-cloud-7", name=None, clarification_question
 
     return {
         "frameworks": {
-            "id": 1,
+            "id": 7,
             "status": status,
             "clarificationQuestionsOpen": clarification_questions_open,
             "name": name,
@@ -64,6 +64,7 @@ def brief(status="draft",
             "id": 1234,
             "title": "I need a thing to do a thing",
             "frameworkSlug": framework_slug,
+            "frameworkFramework": framework_slug,
             "frameworkName": framework_name,
             "lotSlug": lot_slug,
             "status": status,
