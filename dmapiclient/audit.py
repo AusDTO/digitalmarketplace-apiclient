@@ -11,6 +11,7 @@ class AuditTypes(Enum):
     user_auth_failed = "user_auth_failed"
     contact_update = "contact_update"
     supplier_update = "supplier_update"
+    duplicate_supplier = "duplicate_supplier"
 
     # Draft service lifecycle event
     create_draft_service = "create_draft_service"
