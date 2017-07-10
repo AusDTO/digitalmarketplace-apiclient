@@ -122,6 +122,7 @@ class BaseAPIClient(object):
         if not self.enabled:
             return None
 
+        url = url.lstrip('/')
         url = urlparse.urljoin(self.base_url, url)
 
         logger.debug("API request {method} {url}",
