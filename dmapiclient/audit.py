@@ -59,6 +59,8 @@ class AuditTypes(Enum):
 
     unassessed_domain = "unassessed_domain"
     assessed_domain = "assessed_domain"
+    
+    feedback = "feedback"
 
     # Framework agreements
     upload_signed_agreement = "upload_signed_agreement"
