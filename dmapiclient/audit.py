@@ -31,6 +31,7 @@ class AuditTypes(Enum):
     update_brief = "update_brief"
     update_brief_status = "update_brief_status"
     create_brief_response = "create_brief_response"
+    read_brief_responses = "read_brief_responses"
     add_brief_clarification_question = "add_brief_clarification_question"
     delete_brief = "delete_brief"
 
