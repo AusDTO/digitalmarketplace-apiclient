@@ -903,6 +903,17 @@ class TestDataApiClient(object):
         assert result == {"suppliers": "result"}
         assert rmock.called
 
+    def test_find_suppliers_with_per_page_parameter(self, data_client, rmock):
+        rmock.get(
+            "http://baseurl/suppliers?per_page=1000",
+            json={"suppliers": "result"},
+            status_code=200)
+
+        result = data_client.find_suppliers(per_page=1000)
+
+        assert result == {"suppliers": "result"}
+        assert rmock.called
+
     def test_find_services_by_supplier(self, data_client, rmock):
         rmock.get(
             "http://baseurl/services?supplier_code=123",

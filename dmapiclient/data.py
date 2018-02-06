@@ -77,12 +77,14 @@ class DataAPIClient(BaseAPIClient):
 
     # Suppliers
 
-    def find_suppliers(self, prefix=None, page=None, framework=None, duns_number=None):
+    def find_suppliers(self, prefix=None, page=None, framework=None, duns_number=None, per_page=None):
         params = {}
         if prefix:
             params["prefix"] = prefix
         if page is not None:
             params['page'] = page
+        if per_page:
+            params['per_page'] = per_page
         if framework is not None:
             params['framework'] = framework
         if duns_number is not None:
