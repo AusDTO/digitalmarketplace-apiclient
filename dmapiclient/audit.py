@@ -75,6 +75,9 @@ class AuditTypes(Enum):
     delete_countersigned_agreement = "delete_countersigned_agreement"
     snapshot_framework_stats = "snapshot_framework_stats"
 
+    # Email actions
+    send_seller_opportunities_campaign = "send_seller_opportunities_campaign"
+
     @staticmethod
     def is_valid_audit_type(test_audit_type):
 
