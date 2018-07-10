@@ -249,12 +249,14 @@ class DataAPIClient(BaseAPIClient):
                 "users": user,
             })
 
-    def find_users(self, supplier_code=None, page=None):
+    def find_users(self, supplier_code=None, page=None, simple=False):
         params = {}
         if supplier_code is not None:
             params['supplier_code'] = supplier_code
         if page is not None:
             params['page'] = page
+        if simple:
+            params['simple'] = 1
         return self._get("/users", params=params)
 
     find_users_iter = make_iter_method('find_users', 'users', 'users')
