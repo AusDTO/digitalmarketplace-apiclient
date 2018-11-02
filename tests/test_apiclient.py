@@ -347,6 +347,28 @@ class TestDataApiClient(object):
 
             assert rmock.last_request.headers["DM-Request-Id"] == "generated"
 
+    def test_zipkin_headers_are_added_if_available(self, data_client, rmock, app):
+        headers = {
+            'X-B3-SpanId': '123',
+            'X-B3-TraceId': '456'
+        }
+
+        with app.test_request_context('/'):
+            rmock.get('http://baseurl/_status', json={'status': 'ok'}, status_code=200)
+
+            data_client.get_status()
+
+            assert 'X-B3-SpanId' not in rmock.last_request.headers
+            assert 'X-B3-TraceId' not in rmock.last_request.headers
+
+        with app.test_request_context('/', headers=headers):
+            rmock.get('http://baseurl/_status', json={'status': 'ok'}, status_code=200)
+
+            data_client.get_status()
+
+            assert rmock.last_request.headers['X-B3-SpanId'] == '123'
+            assert rmock.last_request.headers['X-B3-TraceId'] == '456'
+
     def test_request_id_is_not_added_if_logging_is_not_loaded(self, data_client, rmock, app):
         headers = {'DM-Request-Id': 'generated'}
         with app.test_request_context('/', headers=headers):

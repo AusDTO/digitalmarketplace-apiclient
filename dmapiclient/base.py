@@ -136,6 +136,7 @@ class BaseAPIClient(object):
             "User-agent": "DM-API-Client/{}".format(__version__),
         }
         headers = self._add_request_id_header(headers)
+        headers = self._add_zipkin_tracing_headers(headers)
 
         start_time = monotonic()
         try:
@@ -180,6 +181,21 @@ class BaseAPIClient(object):
             return headers
         header = current_app.config['DM_REQUEST_ID_HEADER']
         headers[header] = request.request_id
+        return headers
+
+    def _add_zipkin_tracing_headers(self, headers):
+        if not has_request_context():
+            return headers
+
+        span_id = request.headers.get('X-B3-SpanId', None)
+        trace_id = request.headers.get('X-B3-TraceId', None)
+
+        if span_id:
+            headers['X-B3-SpanId'] = span_id
+
+        if trace_id:
+            headers['X-B3-TraceId'] = trace_id
+
         return headers
 
     def get_status(self):
